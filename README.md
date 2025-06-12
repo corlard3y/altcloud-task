@@ -152,7 +152,7 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo systemctl reload nginx
 ```
-if you get any error, check the configuration file
+if you get any error about bucket size, check the configuration file
 
 ```js
 sudo vim /etc/nginx/nginx.conf
@@ -168,8 +168,10 @@ http {
 ```
 
 ### make the entire path readable:
+```js
 chmod 755 /home/ubuntu
 chmod -R 755 /home/ubuntu/altcloud-task
+```
 
 
 
