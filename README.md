@@ -1,3 +1,22 @@
+## 🌐 Live Demo
+
+**Website URL:** [https://kolade.site](https://kolade.site)
+**Public IP**: https://ec2-3-253-66-60.eu-west-1.compute.amazonaws.com/
+
+## 📸 Screenshot
+
+![Portfolio Website Screenshot](../src/assets/Screenshot.png)
+
+## 🚀 Project Overview
+
+This project demonstrates the deployment of a React application to AWS EC2 infrastructure with production-ready configurations including:
+- AWS EC2 server provisioning
+- Nginx web server setup
+- SSL certificate configuration with Let's Encrypt
+- Custom domain configuration
+- Security hardening with UFW firewall
+
+
 ## Steps for this Alt Cloud Task
 
 ## 1. Step 1: Provisioning AWS EC2 Server
@@ -17,7 +36,7 @@ HTTPS (443) - 0.0.0.0/0
 
 ### Connect to Server
 ```js
-ssh -i your-key.pem ubuntu@ec2-public-ip
+ssh -i your-key.pem ubuntu@my-ec2-public-ip
 ```
 
 
@@ -59,7 +78,7 @@ npm run build
 ### Create Nginx config:
 
 ```js
-sudo nano /etc/nginx/sites-available/your-app
+sudo nano /etc/nginx/sites-available/altcloud-task
 ```
 
 ### Add this configuration:
