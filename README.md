@@ -1,54 +1,53 @@
-# React + TypeScript + Vite
+## Steps for this Alt Cloud Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1. Provisioning AWS EC2 Server
+### Step 1: Launch EC2 Instance
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-  Go to AWS Console > EC2 > Launch Instance
+- Choose: Ubuntu Server 22.04 LTS (Free Tier eligible)
+- Instance Type: t2.micro (Free Tier)
+- Key Pair: Create new or use existing
+- Security Group: Create new with these rules:
 
 ```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+SSH (22) - Your IP only
+HTTP (80) - 0.0.0.0/0
+HTTPS (443) - 0.0.0.0/0
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
+### Step 2: Connect to Server
 ```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+ssh -i your-key.pem ubuntu@ec2-public-ip
 ```
+
+
+## 2. Server Setup & Dependencies
+### Update system:
+```js
+bashsudo apt update && sudo apt upgrade -y
+```
+
+### Install Node.js & npm:
+```js
+bashcurl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+### Install Nginx:
+```js
+bashsudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+  ```
+
+
+## 3. Deploy Your React App
+### Build your app locally:
+```js
+npm run build
+  ```
+
+### Transfer files to server:
+```js
+
+````

@@ -1,6 +1,6 @@
 import './App.css'
-import { Accordion } from './assets/components/accordion';
 import AvatarImg from './assets/memoji.webp';
+import Accordion from './components/Accordion';
 
 function App() {
 const myData = [
