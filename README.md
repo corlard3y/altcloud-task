@@ -37,7 +37,7 @@ HTTPS (443) - 0.0.0.0/0
 
 ### Connect to Server
 ```js
-ssh -i your-key.pem ubuntu@my-ec2-public-ip
+ssh -i my-key.pem ubuntu@ec2-3-253-66-60.eu-west-1.compute.amazonaws.com
 ```
 
 
@@ -69,8 +69,8 @@ npm run build
 
 ### Transfer files to server:
 ```js
-git clone your-repo-url
-cd your-project
+git clone https://github.com/corlard3y/altcloud-task
+cd altcloud-task
 npm install
 npm run build
 ````
