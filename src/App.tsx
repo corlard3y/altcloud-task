@@ -20,7 +20,7 @@ const myData = [
 
   return (
     <div className="w-screen lg:h-screen bg-white flex flex-col justify-between box-border">
-      <div className='lg:p-12 p-8 flex flex-col justify-between pb-24 lg:pb-0 lg:h-[75vh] xl:h-[65vh] h-auto'>
+      <div className='lg:p-12 p-8 flex flex-col justify-between pb-24 lg:pb-0 lg:h-[75vh] 2xl::h-[65vh] h-auto'>
       {/* nav */}
       <div className="flex flex-row justify-between">
         <div className='flex flex-row gap-1 items-center'>

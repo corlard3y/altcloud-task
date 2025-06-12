@@ -1,7 +1,7 @@
 ## 🌐 Live Demo
 
 - **Website URL:** [https://kolade.site](https://kolade.site) <br />
-- **Public IP**: https://ec2-3-253-66-60.eu-west-1.compute.amazonaws.com/ <br /> <br />
+- **Public IP**: http://ec2-3-253-66-60.eu-west-1.compute.amazonaws.com/ <br /> <br />
 
 ## 📸 Screenshot
 
@@ -85,9 +85,45 @@ sudo nano /etc/nginx/sites-available/altcloud-task
 ### Add this configuration:
 
 ```js
+# HTTP server block for domain (redirects to HTTPS)
 server {
     listen 80;
     server_name kolade.site www.kolade.site;
+    return 301 https://$host$request_uri;
+}
+
+# HTTP server block for EC2 hostname (no SSL redirect)
+server {
+    listen 80;
+    server_name ec2-3-253-66-60.eu-west-1.compute.amazonaws.com;
+
+    root /home/ubuntu/altcloud-task/dist;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Gzip compression
+    gzip on;
+    gzip_types text/css application/javascript application/json;
+
+    # Cache static assets
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+}
+
+# HTTPS server block for domain only
+server {
+    listen 443 ssl;
+    server_name kolade.site www.kolade.site;
+
+    ssl_certificate /etc/letsencrypt/live/kolade.site/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/kolade.site/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
     root /home/ubuntu/altcloud-task/dist;
     index index.html;
@@ -115,6 +151,20 @@ sudo ln -s /etc/nginx/sites-available/your-app /etc/nginx/sites-enabled/
 sudo rm /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo systemctl reload nginx
+```
+if you get any error, check the configuration file
+
+```js
+sudo vim /etc/nginx/nginx.conf
+```
+
+Find the http block and add this line inside it:
+```js
+http {
+    server_names_hash_bucket_size 128;
+
+    # ... rest of your config
+}
 ```
 
 ### make the entire path readable:
