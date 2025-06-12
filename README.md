@@ -1,11 +1,12 @@
 ## 🌐 Live Demo
 
-**Website URL:** [https://kolade.site](https://kolade.site)
-**Public IP**: https://ec2-3-253-66-60.eu-west-1.compute.amazonaws.com/
+- **Website URL:** [https://kolade.site](https://kolade.site) <br />
+- **Public IP**: https://ec2-3-253-66-60.eu-west-1.compute.amazonaws.com/ <br /> <br />
 
 ## 📸 Screenshot
 
-![Portfolio Website Screenshot](../src/assets/Screenshot.png)
+![Portfolio Website Screenshot](src/assets/Screenshot.png)
+![Portfolio Website Screenshot](src/assets/Screenshot-2.png)
 
 ## 🚀 Project Overview
 
@@ -19,7 +20,7 @@ This project demonstrates the deployment of a React application to AWS EC2 infra
 
 ## Steps for this Alt Cloud Task
 
-## 1. Step 1: Provisioning AWS EC2 Server
+## Step 1: Provisioning AWS EC2 Server
 ### Launch EC2 Instance
 
 -  Go to AWS Console > EC2 > Launch Instance
@@ -40,7 +41,7 @@ ssh -i your-key.pem ubuntu@my-ec2-public-ip
 ```
 
 
-## 2. Step 2: Server Setup & Dependencies
+## Step 2: Server Setup & Dependencies
 ### Update system:
 ```js
 bashsudo apt update && sudo apt upgrade -y
@@ -60,7 +61,7 @@ sudo systemctl enable nginx
   ```
 
 
-## 3. Step 3: Deploy Your React App
+## Step 3: Deploy Your React App
 ### Build your app locally:
 ```js
 npm run build
@@ -74,7 +75,7 @@ npm install
 npm run build
 ````
 
-## 4. Step 4: Configure Nginx
+## Step 4: Configure Nginx
 ### Create Nginx config:
 
 ```js
@@ -122,7 +123,7 @@ chmod -R 755 /home/ubuntu/altcloud-task
 
 
 
-## 5. Step 5: Configure Domain DNS (GoDaddy)
+## Step 5: Configure Domain DNS (GoDaddy)
 ```js
 In your GoDaddy DNS settings, add these A record:
 Type: A
@@ -132,7 +133,7 @@ TTL: 600
 ```
 
 
-## 6. Step 6: Configure SSL with Vertbot
+## Step 6: Configure SSL with Vertbot
 
 ```js
 ### Install snapd (if not already installed)
@@ -164,7 +165,7 @@ sudo ufw status
 ```
 
 
-## 7. Step 8: Deploy
+## Step 8: Deploy
 ### Create deployment script
 ```js
 nano /home/ubuntu/deploy.sh
@@ -195,4 +196,9 @@ echo "Site accessible at: https://kolade.site"
 ### Make script executable
 ```js
 chmod +x /home/ubuntu/deploy.sh
+```
+
+# Deploy the changes continually
+```js
+  ./deploy.sh
 ```
