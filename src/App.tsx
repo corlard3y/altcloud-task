@@ -19,8 +19,8 @@ const myData = [
 ];
 
   return (
-    <div className="w-screen h-screen bg-white flex flex-col justify-between box-border">
-      <div className='p-12 h-full flex flex-col'>
+    <div className="w-screen lg:h-screen bg-white flex flex-col justify-between box-border">
+      <div className='lg:p-12 p-8 flex flex-col justify-between pb-24 lg:pb-0 lg:h-[75vh] h-auto'>
       {/* nav */}
       <div className="flex flex-row justify-between">
         <div className='flex flex-row gap-1 items-center'>
@@ -42,10 +42,10 @@ const myData = [
       </div>
 
       {/* content */}
-      <div className='pt-18 items-center w-full flex flex-row justify-between gap-54 items-start'>
-        <div className='flex-3/5'>
-          <div className='text-gray-900 text-8xl font-bold leading-none pb-2'>I'm Kolade <br /> Oyewumi</div>
-          <div className='text-3xl font-semibold pb-12 text-gray-800'>Cloud Devops Engineer</div>
+      <div className='pt-24 lg:pt-0 items-center w-full flex flex-col lg:flex-row justify-between lg:gap-54 items-start'>
+        <div className='flex-none lg:flex-3/5'>
+          <div className='text-gray-900 text-6xl lg:text-8xl font-bold leading-none pb-2'>I'm Kolade <br /> Oyewumi</div>
+          <div className='text-3xl font-semibold pb-6 text-gray-800'>Cloud Devops Engineer</div>
 
           <h3 className='text-xl pb-2 text-gray-800'>The Future of Local Service Marketplace</h3>
           <div className='text-md font-light text-gray-500'>
@@ -57,18 +57,17 @@ const myData = [
         </div>
 
         {/* education */}
-        <div className='flex-2/5'>
+        <div className='pt-24 lg:pt-0 flex-none lg:flex-2/5 w-full'>
           <h2 className='font-semibold text-sm text-gray-400 pb-4'>
             ABOUT ME
           </h2>
           <Accordion items={myData} />
         </div>
       </div>
-
       </div>
 
       {/* footer */}
-      <div className='w-full bg-[#dcfe9c] box-border py-6 px-12 flex flex-row justify-between'>
+      <div className='w-full bg-[#dcfe9c] box-border py-6 px-12 flex flex-col lg:flex-row items-center justify-between shadow-[0_-2px_8px_rgba(0,0,0,0.1)]'>
         <div className='text-gray-800 font-semibold text-lg'>Made by me 🎯</div>
         <div className='text-gray-800 font-semibold text-lg'>Based in Lagos, Nigeria 📍</div>
         </div>
