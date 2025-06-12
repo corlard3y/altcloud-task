@@ -252,5 +252,5 @@ chmod +x /home/ubuntu/deploy.sh
 
 # Deploy the changes continually
 ```js
-  ./deploy.sh
+./deploy.sh
 ```
