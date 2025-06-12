@@ -1,7 +1,7 @@
 ## Steps for this Alt Cloud Task
 
-## 1. Provisioning AWS EC2 Server
-### Step 1: Launch EC2 Instance
+## 1. Step 1: Provisioning AWS EC2 Server
+### Launch EC2 Instance
 
 -  Go to AWS Console > EC2 > Launch Instance
 - Choose: Ubuntu Server 22.04 LTS (Free Tier eligible)
@@ -15,13 +15,13 @@ HTTP (80) - 0.0.0.0/0
 HTTPS (443) - 0.0.0.0/0
 ```
 
-### Step 2: Connect to Server
+### Connect to Server
 ```js
 ssh -i your-key.pem ubuntu@ec2-public-ip
 ```
 
 
-## 2. Server Setup & Dependencies
+## 2. Step 2: Server Setup & Dependencies
 ### Update system:
 ```js
 bashsudo apt update && sudo apt upgrade -y
@@ -41,7 +41,7 @@ sudo systemctl enable nginx
   ```
 
 
-## 3. Deploy Your React App
+## 3. Step 3: Deploy Your React App
 ### Build your app locally:
 ```js
 npm run build
@@ -55,7 +55,7 @@ npm install
 npm run build
 ````
 
-## 4. Configure Nginx
+## 4. Step 4: Configure Nginx
 ### Create Nginx config:
 
 ```js
@@ -103,22 +103,17 @@ chmod -R 755 /home/ubuntu/altcloud-task
 
 
 
-## 5. Configure Domain DNS (GoDaddy)
+## 5. Step 5: Configure Domain DNS (GoDaddy)
 ```js
-In your GoDaddy DNS settings, add these A records:
+In your GoDaddy DNS settings, add these A record:
 Type: A
 Name: @
-Value: 3.253.66.60
-TTL: 600
-
-Type: A
-Name: www
 Value: 3.253.66.60
 TTL: 600
 ```
 
 
-## 6. Configure SSL with Vertbot
+## 6. Step 6: Configure SSL with Vertbot
 
 ```js
 ### Install snapd (if not already installed)
@@ -135,7 +130,7 @@ sudo certbot --nginx -d kolade.site -d www.kolade.site
 ```
 
 
-## Step 6: Setup Firewall
+## Step 7: Setup Firewall
 ### Configure UFW firewall
 
 ```js
@@ -144,13 +139,14 @@ sudo ufw allow 'Nginx Full'
 sudo ufw enable
 ```
 
-# Check firewall status
+### Check firewall status
 ```js
 sudo ufw status
 ```
 
 
-## 7. Create deployment script
+## 7. Step 8: Deploy
+### Create deployment script
 ```js
 nano /home/ubuntu/deploy.sh
 ```
@@ -177,7 +173,7 @@ echo "Deployment complete!"
 echo "Site accessible at: https://kolade.site"
   ```
 
-# Make script executable
+### Make script executable
 ```js
 chmod +x /home/ubuntu/deploy.sh
 ```
